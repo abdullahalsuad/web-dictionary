@@ -7,7 +7,7 @@ export default function Footer  ()  {
       <hr style={{ width: "90%", marginTop: 20 }} />
       <span className={styles.name}>
         Made by{" "}
-        <a href="https://www.youtube.com/c/RoadsideCoder" target="__blank">
+        <a href="https://abdullahalsuad.netlify.app/" target="__blank">
           Abdullah Al Suad
         </a>
       </span>
