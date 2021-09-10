@@ -3,14 +3,14 @@ import React from 'react';
 import styles from './Header.module.css';
 import countries from '../../data/category';
 
-const Header = ({category,setCategory, setWord,word,setmeanings}) => {
+const Header = ({category,setCategory, setWord,word,setmeanings,lightTheme}) => {
     
     const darkTheme = createTheme({
         palette: {
             primary: {
-                main:"#fff",
-              },
-          type: 'dark',
+            main: lightTheme ? "#000" : "#fff",
+            },
+            type: lightTheme ? "light" : "dark",
         },
       });
 
