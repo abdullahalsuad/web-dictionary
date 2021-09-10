@@ -19,7 +19,8 @@
       height: 25vh;
     }
     .title {
-      font-size: 5vw;
+      font-size: 6vw;
+      margin-top: 60px;
     }
   }
 
@@ -27,6 +28,7 @@
     width: 100%;
     display: flex;
     justify-content: space-around;
+    margin-top: 15px;
   }
 
   .search {

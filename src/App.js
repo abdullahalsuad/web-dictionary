@@ -79,8 +79,8 @@ function App() {
             category={category}
           />
         )}
-        <Footer />
      </Container>
+     <Footer />
     </div>
   );
 }

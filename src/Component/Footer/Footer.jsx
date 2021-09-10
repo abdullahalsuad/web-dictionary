@@ -8,7 +8,7 @@ export default function Footer  ()  {
       <span className={styles.name}>
         Made by{" "}
         <a href="https://www.youtube.com/c/RoadsideCoder" target="__blank">
-          Roadside Coder
+          Abdullah Al Suad
         </a>
       </span>
       <div className={styles.iconContainer}>
