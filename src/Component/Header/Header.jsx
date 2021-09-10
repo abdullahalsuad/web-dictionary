@@ -1,9 +1,9 @@
 import { createTheme, MenuItem, TextField, ThemeProvider } from '@material-ui/core';
 import React from 'react';
-import styles from './Header.module.css'
-import category from '../../data/category';
+import styles from './Header.module.css';
+import countries from '../../data/category';
 
-const Header = () => {
+const Header = ({category,setCategory, setWord,word,setmeanings}) => {
     
     const darkTheme = createTheme({
         palette: {
@@ -13,26 +13,39 @@ const Header = () => {
           type: 'dark',
         },
       });
+
+    const handleChange = (language) => {
+        setCategory(language);
+        setWord("");
+        setmeanings([]);
+      };
+
     return (
         <div className={styles.header}>
-        <span className={styles.title}>Web Dictionary</span>
+        <span className={styles.title}>{word ? word : "Web Dictionary"}</span>
         <div className={styles.inputs}>
-            <ThemeProvider theme ={darkTheme} >
-                <TextField id="standard-basic" label="Standard" />
-                <TextField
-                    select
-                    label="Language"
-                    value={category}
-                    // onChange={(e) => handleChange(e)}
-                    className="select"
+        <ThemeProvider theme ={darkTheme} >
+            <TextField
+                className={styles.search}
+                id="filled-basic"
+                label="Search a Word"
+                value={word}
+                onChange={(e) => setWord(e.target.value)}
+            />
+            <TextField
+                className={styles.select}
+                select
+                label="Language"
+                value={category}
+                onChange={(e) => handleChange(e.target.value)}
                 >
-           {category.map((option) => (
+           {countries.map((option) => (
               <MenuItem key={option.label} value={option.label}>
                 {option.value}
               </MenuItem>
             ))}
                 </TextField>
-            </ThemeProvider>
+        </ThemeProvider>
         </div>
         </div>
     )

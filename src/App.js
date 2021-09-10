@@ -3,25 +3,27 @@ import { Container } from '@material-ui/core';
 import axios from 'axios';
 import { useEffect,useState } from 'react';
 import './App.css';
+import Definitions from './Component/Definitions/Definitions';
 import Header from './Component/Header/Header';
 
 function App() {
   const [word, setWord] = useState('')
-  const [meaning, setMeaning] = useState([]);
+  const [meanings, setmeanings] = useState([]);
   const [category, setCategory] = useState("en");
 
   const dictionaryApi = async() => {
     try{
-      const data = await axios.get("https://api.dictionaryapi.dev/api/v2/entries/en/h");
-        setMeaning(data.data)
+      const data = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/${category}/${word}`);
+        setmeanings(data.data)
     } catch (error){
       console.log(error);
     }
     }
-  console.log(meaning)  
+
   useEffect(() =>{
     dictionaryApi()
-  }, [])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [word, category])
 
 
   return (
@@ -42,9 +44,23 @@ function App() {
           // justifyContent: "space-evenly",
     }}
      >
-     <Header/>
+     <Header 
+        category={category}
+        setCategory={setCategory}
+        setWord={setWord}
+        word={word}
+        setmeanings={setmeanings}
+        // LightTheme={LightTheme}
+     />
+      {meanings && (
+          <Definitions
+            meanings={meanings}
+            word={word}
+            // LightTheme={LightTheme}
+            category={category}
+          />
+        )}
      </Container>
-    
     </div>
   );
 }
